@@ -1,0 +1,24 @@
+# Nextflow runtime files
+work/
+.nextflow/
+.nextflow.log*
+timeline*.html
+report*.html
+trace*.txt
+dag*.html
+
+# Outputs and data — never commit these
+output/
+*.fastq
+*.fastq.gz
+*.fq.gz
+*.bam
+*.pod5
+
+# data
+raw_data/
+metadata.csv
+
+# OS / editor clutter
+.DS_Store
+Thumbs.db
