@@ -1,6 +1,6 @@
-include { CAT_FASTQ } from './modules/concat_ont/main'
-include { EMU_ABUNDANCE } from './modules/emu/main'
-include { NANOQ } from './modules/nano_q/main'
+include { CAT_FASTQ } from './modules/nf-core/cat/fastq/main'
+include { EMU_ABUNDANCE } from './modules/nf-core/emu/abundance/main'
+include { NANOQ } from './modules/nf-core/nanoq/main' 
 
 params.raw_data = "${projectDir}/raw_data"
 params.outdir = 'results'

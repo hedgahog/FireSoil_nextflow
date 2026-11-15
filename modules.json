@@ -1,0 +1,27 @@
+{
+  "name": "hedgahog/FireSoil_nextflow",
+  "homePage": "",
+  "repos": {
+    "https://github.com/nf-core/modules.git": {
+      "modules": {
+        "nf-core": {
+          "cat/fastq": {
+            "branch": "master",
+            "git_sha": "3ed7dbab112fa8802f0affff345b8fa2ac935e5c",
+            "installed_by": ["modules"]
+          },
+          "emu/abundance": {
+            "branch": "master",
+            "git_sha": "7b3452a23773f687ededb4befd037920e5a51341",
+            "installed_by": ["modules"]
+          },
+          "nanoq": {
+            "branch": "master",
+            "git_sha": "7b3452a23773f687ededb4befd037920e5a51341",
+            "installed_by": ["modules"]
+          }
+        }
+      }
+    }
+  }
+}
