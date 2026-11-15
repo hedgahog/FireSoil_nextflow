@@ -3,28 +3,18 @@ include { EMU_ABUNDANCE } from './modules/nf-core/emu/abundance/main'
 include { NANOQ } from './modules/nf-core/nanoq/main' 
 
 params.raw_data = "${projectDir}/raw_data"
-params.outdir = 'results'
-
+params.outdir = '/results'
 
 workflow {
-    def barcode_reads = channel
-        .fromPath("${params.raw_data}/*", type: 'dir', checkIfExists: true)
-        .map { folder ->
-            def reads = folder.toFile().listFiles()
-                .findAll { file -> file.isFile() && file.name.endsWith('.fastq.gz') }
-                .sort { file -> file.name }
-                .collect { file -> file.toPath() }
 
-            [[id: folder.name, single_end: true], reads]
-        }
-        .filter { _meta, reads -> reads.size() > 0 }
+    // 3. Build the input channel
+    //    Goal shape, one item per sample:  [ [id:'barcode01', single_end:true], [file1, file2, ...] ]
+    ch_reads = Channel.fromP
 
-    CAT_FASTQ(barcode_reads)
+    ch_reads.view()   // check the shape BEFORE connecting any module
 
-    NANOQ(
-        CAT_FASTQ.out.reads,
-        params.nanoq_output_format
-    )
-    NANOQ.out.stats.view()
-    NANOQ.out.reads.view()
+    // 4. Connect modules: each one's input = the previous one's .out.<emit name>
+    // TODO: CAT_FASTQ( ... )
+    // TODO: NANOQ( ... )
+    // TODO: EMU_ABUNDANCE( ... )
 }
